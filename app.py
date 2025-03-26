@@ -58,7 +58,8 @@ Institute VARCHAR(100),
 Course_Name VARCHAR(100),
 Exam_JEEMHT__CET VARCHAR(100),
 Type VARCHAR(100),
-Seat_Type VARCHAR(100)
+Seat_Type VARCHAR(100),
+Fees Structure INTEGER
 );""")
 '''
 
@@ -264,8 +265,9 @@ def details():
 
 
 @app.route("/suggestions")
-def suggestions():
-    # Rendering suggestions along with clg list generated in runtime
+def suggestion():
+    db.execute("SELECT * FROM colleges")
+    clg_list = db.fetchall()
     return render_template("suggestions.html", clg_list = clg_list)
 
 
